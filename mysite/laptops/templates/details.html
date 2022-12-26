@@ -1,0 +1,146 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .checked {
+        color: orange;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    {% include 'partials/_navbar.html' %}
+
+    <div class="contaier mt-3 ml-5">
+        <div class="row">
+            <div class="col-3">
+                <div class="card text mb-3" style="max-width: 24rem;">
+                    {% for record in Laptoplar %}
+                        {% if record.id == id %}
+                            <img src="{{ record.Resim }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <div class="row text-center">
+                                    <div class="col-4">
+                                        <h5 class="card-title"><strong>{{ record.Marka }}</strong></h5>
+                                    </div>
+                                    <div class="col-5 text-right">
+                                        {% if record.id == id %}
+                                            {% if record.Puan == "NULL" %}
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            {% endif %}
+                                            {% if record.Puan.0 == "1" %}
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            {% endif %}
+                                            {% if record.Puan.0 == "2" %}
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            {% endif %}
+                                            {% if record.Puan.0 == "3" %}
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            {% endif %}
+                                            {% if record.Puan.0 == "4" %}
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                            {% endif %}
+                                            {% if record.Puan == "5" %}
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-3">
+                                        {% if record.Id == Id %}
+                                            {% if record.Puan == "NULL" %}
+                                                <h5 class="card-title text-left"><strong>(0)</strong></h5>
+                                            {% else %}
+                                                <h5 class="card-title text-left"><strong>{{ record.Puan }}</strong></h5>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <p class="card-text">{{ record.Baslik }}</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">{{ record.Fiyat }} TL</li>
+                                <li class="list-group-item">
+                                    {{ record.Site }}
+                                    <a href={{ record.Link }} class="btn btn-outline-dark ml-5">Siteye Git</a>
+                                </li>
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-5">
+                        <ul class="list-group">
+                            {% for record in Laptoplar %}
+                                {% if record.id == id %}
+                                    <li class="list-group-item text-left"><small></small>Marka</small></li>
+                                    <li class="list-group-item text-left"><small></small>Model</small></li>
+                                    <li class="list-group-item text-left"><small></small>İşletim Sistemi</small></li>
+                                    <li class="list-group-item text-left"><small></small>İşlemci</small></li>
+                                    <li class="list-group-item text-left"><small></small>Bellek</small></li>
+                                    <li class="list-group-item text-left"><small></small>Ekran Boyutu</small></li>
+                                    <li class="list-group-item text-left"><small></small>HDD</small></li>
+                                    <li class="list-group-item text-left"><small></small>SSD</small></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>  
+                    <div class="col-5">
+                        <ul class="list-group">
+                            {% for record in Laptoplar %}
+                                {% if record.id == id %}
+                                    <li class="list-group-item text-right"><small></small>{{ record.Marka }}</small></li>
+                                    <li class="list-group-item text-right"><small></small>{{ record.Model }}</small></li>
+                                    <li class="list-group-item text-right"><small></small>{{ record.Isletim_Sistemi }}</small></li>
+                                    <li class="list-group-item text-right"><small></small>{{ record.Islemci }}</small></li>
+                                    <li class="list-group-item text-right"><small></small>{{ record.Bellek }}</small></li>
+                                    <li class="list-group-item text-right"><small></small>{{ record.Ekran_Boyutu }}</small></li>
+                                    <li class="list-group-item text-right"><small></small>{{ record.Disk.HDD }}</small></li>
+                                    <li class="list-group-item text-right"><small></small>{{ record.Disk.SSD }}</small></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>  
+                </div>
+            </div>
+        </div>  
+    </div>
+      
+    
+
+</body>
+</html>    
