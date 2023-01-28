@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'ColabDB',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'mongodb+srv://melihturaneri:hE1ofvjkmlTeKSVr@sposasondisprezzata.b0n0wrw.mongodb.net/?retryWrites=true&w=majority' 
+            'host': '<your updated connection string>'
         }
     }
 }
